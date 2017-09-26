@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "crazyhl/cimple",
+    "description": "Blog based on laravel.",
+    "keywords": ["blog", "laravel"],
     "license": "MIT",
     "type": "project",
     "require": {
