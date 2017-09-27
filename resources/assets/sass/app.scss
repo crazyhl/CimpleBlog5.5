@@ -28,6 +28,84 @@
   border-bottom: 2px solid $my-main-color;
 }
 
+a {
+  color: #636b6f;
+  cursor: pointer;
+  &:hover  {
+    color: $my-main-color;
+    text-decoration: none;
+  }
+  &:active{
+    color: $my-main-color;
+  }
+}
+
+
+.articles {
+  padding-bottom:14px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid rgba(0,0,0,0.0785);
+  h3 {
+    margin-top: 11px;
+    color: $my-main-color;
+  }
+  .article-info {
+    color: #999;
+  }
+  .article-content {
+    margin-top: 11px;
+    font-size:1.1em;
+    img{
+      max-width:100%;
+    }
+  }
+  .read-more {
+    margin-top:11px;
+    font-size:1.2em;
+    a {
+      color: $my-main-color;
+    }
+  }
+}
+.side-bar {
+  .h4 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .side-bar-header {
+    border-bottom: 1px solid rgba(0,0,0,0.0785);
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+
+  .side-bar-body {
+    margin-top: 11px;
+    margin-bottom:14px;
+    ul {
+      list-style: none;
+      padding-left: 0px;
+      li{
+        display:inline-block;
+        width: 100%;
+        overflow: hidden;
+      }
+    }
+  }
+}
+.blog-header {
+  margin:0px;
+}
+.blog-footer {
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid rgba(0,0,0,0.0785);
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .navbar-collapse {
     padding-left: 15px;
