@@ -7,5 +7,7 @@ use App\Http\Controllers\Controller;
 
 class IndexController extends BaseController
 {
-    //
+    public function index() {
+        return 'AdminHOme';
+    }
 }
