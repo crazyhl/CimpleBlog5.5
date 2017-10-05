@@ -6,6 +6,7 @@ class IndexController extends BaseController
 {
     public function index()
     {
-        return 'AdminHOme';
+        $pageTitle = '仪表盘';
+        return view('admin.index.index', compact('pageTitle'));
     }
 }
