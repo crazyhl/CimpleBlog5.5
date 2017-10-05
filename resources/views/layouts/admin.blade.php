@@ -719,6 +719,15 @@
 
             <li class="">
                 <a href="widgets.html">
+                    <i class="menu-icon fa fa-link"></i>
+                    <span class="menu-text"> 链接管理 </span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a href="widgets.html">
                     <i class="menu-icon fa fa-gears"></i>
                     <span class="menu-text"> 系统设置 </span>
                 </a>

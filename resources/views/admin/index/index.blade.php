@@ -12,24 +12,24 @@
                 <div class="infobox-content">文章数</div>
             </div>
 
-            <div class="stat stat-success">8%</div>
+            {{--<div class="stat stat-success">8%</div>--}}
         </div>
 
-        {{--<div class="infobox infobox-blue">--}}
-            {{--<div class="infobox-icon">--}}
-                {{--<i class="ace-icon fa fa-twitter"></i>--}}
-            {{--</div>--}}
+        <div class="infobox infobox-blue">
+            <div class="infobox-icon">
+                <i class="ace-icon fa fa-list-ul"></i>
+            </div>
 
-            {{--<div class="infobox-data">--}}
-                {{--<span class="infobox-data-number">11</span>--}}
-                {{--<div class="infobox-content">new followers</div>--}}
-            {{--</div>--}}
+            <div class="infobox-data">
+                <span class="infobox-data-number">11</span>
+                <div class="infobox-content">分类数量</div>
+            </div>
 
             {{--<div class="badge badge-success">--}}
                 {{--+32%--}}
                 {{--<i class="ace-icon fa fa-arrow-up"></i>--}}
             {{--</div>--}}
-        {{--</div>--}}
+        </div>
 
         {{--<div class="infobox infobox-pink">--}}
             {{--<div class="infobox-icon">--}}
