@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Links extends Model
 {
     /**
-     * 该模型是否被自动维护时间戳
+     * 该模型是否被自动维护时间戳.
      *
      * @var bool
      */

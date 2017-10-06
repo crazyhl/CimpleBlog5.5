@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreLink;
 use App\Models\Links;
+use App\Http\Requests\StoreLink;
 
 /**
  * 链接控制器
- * Class LinkController
- * @package App\Http\Controllers\Admin
+ * Class LinkController.
  */
 class LinkController extends BaseController
 {
     /**
-     * 链接列表
+     * 链接列表.
      */
     public function index()
     {
@@ -25,7 +24,7 @@ class LinkController extends BaseController
     }
 
     /**
-     * 新增链接
+     * 新增链接.
      */
     public function create()
     {
@@ -36,7 +35,7 @@ class LinkController extends BaseController
     }
 
     /**
-     * 保存新增链接
+     * 保存新增链接.
      * @param StoreLink $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -52,7 +51,7 @@ class LinkController extends BaseController
     }
 
     /**
-     * 编辑链接
+     * 编辑链接.
      * @param Links $link
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -64,14 +63,14 @@ class LinkController extends BaseController
         return view('admin.link.edit', compact('pageTitle', 'activeSidebar', 'link'));
     }
 
-
     /**
-     * 保存编辑链接
+     * 保存编辑链接.
      * @param StoreLink $request
      * @param Links $link
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(StoreLink $request, Links $link) {
+    public function update(StoreLink $request, Links $link)
+    {
         $link->title = $request->title;
         $link->description = $request->description;
         $link->url = $request->url;
@@ -80,7 +79,8 @@ class LinkController extends BaseController
         return redirect(route('adminLinkList'));
     }
 
-    public function delete(Links $link) {
+    public function delete(Links $link)
+    {
         $link->delete();
 
         return redirect(route('adminLinkList'));

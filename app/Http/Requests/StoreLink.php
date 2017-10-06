@@ -2,13 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * 存储 link 的验证器
- * Class StoreLink
- * @package App\Http\Requests
+ * Class StoreLink.
  */
 class StoreLink extends FormRequest
 {
@@ -42,7 +41,6 @@ class StoreLink extends FormRequest
                 Rule::unique('links')->ignore($this->route('link')->id),
                 'max:255',
             ];
-
         } else {
             // 新增的时候
             $rules['title'] = 'required|unique:links|max:255';
