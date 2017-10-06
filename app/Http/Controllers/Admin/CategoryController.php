@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreCategory;
 use App\Models\Categories;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategory;
 
 /**
  * 分类管理
- * Class CategoryController
- * @package App\Http\Controllers\Admin
+ * Class CategoryController.
  */
 class CategoryController extends BaseController
 {
