@@ -11,16 +11,22 @@ use App\Http\Requests\StoreLink;
  */
 class LinkController extends BaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->returnValueArr['activeSidebar'] = 'adminLink';
+    }
+
     /**
      * 链接列表.
      */
     public function index()
     {
         $pageTitle = '链接列表';
-        $activeSidebar = 'adminLink';
         $links = Links::orderBy('id', 'desc')->paginate($this->perPageCount);
 
-        return view('admin.link.index', compact('pageTitle', 'activeSidebar', 'links'));
+        $this->returnValueArr += compact('pageTitle', 'links');
+        return view('admin.link.index', $this->returnValueArr);
     }
 
     /**
@@ -29,9 +35,9 @@ class LinkController extends BaseController
     public function create()
     {
         $pageTitle = '新增链接';
-        $activeSidebar = 'adminLink';
 
-        return view('admin.link.create', compact('pageTitle', 'activeSidebar'));
+        $this->returnValueArr += compact('pageTitle');
+        return view('admin.link.create', $this->returnValueArr);
     }
 
     /**
@@ -58,9 +64,9 @@ class LinkController extends BaseController
     public function edit(Links $link)
     {
         $pageTitle = '编辑链接';
-        $activeSidebar = 'adminLink';
 
-        return view('admin.link.edit', compact('pageTitle', 'activeSidebar', 'link'));
+        $this->returnValueArr += compact('pageTitle', 'link');
+        return view('admin.link.edit', $this->returnValueArr);
     }
 
     /**

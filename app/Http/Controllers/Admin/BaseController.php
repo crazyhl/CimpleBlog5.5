@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 class BaseController extends Controller
 {
+    protected $returnValueArr = [];
     /**
      * 后台的分页每页数量.
      * @var int

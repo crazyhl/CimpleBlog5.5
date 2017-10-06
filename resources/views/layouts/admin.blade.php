@@ -334,7 +334,7 @@
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="#">
+                            <a href="{{route('adminOptionList')}}">
                                 <i class="ace-icon fa fa-cog"></i>
                                 系统设置
                             </a>
@@ -726,8 +726,8 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="">
-                <a href="widgets.html">
+            <li @if($activeSidebar == 'adminOption')class="active"@endif>
+                <a href="{{route('adminOptionList')}}">
                     <i class="menu-icon fa fa-gears"></i>
                     <span class="menu-text"> 系统设置 </span>
                 </a>
