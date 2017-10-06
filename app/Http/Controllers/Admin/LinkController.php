@@ -18,7 +18,7 @@ class LinkController extends BaseController
     {
         $pageTitle = '链接列表';
         $activeSidebar = 'adminLink';
-        $links = Links::paginate($this->perPageCount);
+        $links = Links::orderBy('id', 'desc')->paginate($this->perPageCount);
 
         return view('admin.link.index', compact('pageTitle', 'activeSidebar', 'links'));
     }
