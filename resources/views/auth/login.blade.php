@@ -96,20 +96,7 @@
                                         </fieldset>
                                     </form>
                                 </div><!-- /.widget-main -->
-                                @if(count($errors) > 0)
-                                    <div class="alert alert-danger" role="alert">
-                                        @if ($errors->has('email'))
-                                            <span>
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                        @endif
-                                        @if ($errors->has('password'))
-                                            <span>
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
-                                @endif
+                                @include('layouts.errors')
                             </div><!-- /.widget-body -->
                         </div><!-- /.login-box -->
                     </div><!-- /.position-relative -->

@@ -7,6 +7,12 @@ use App\Http\Controllers\Controller;
 class BaseController extends Controller
 {
     /**
+     * 后台的分页每页数量
+     * @var int
+     */
+    protected $perPageCount = 10;
+
+    /**
      * Create a new controller instance.
      *
      * @return void

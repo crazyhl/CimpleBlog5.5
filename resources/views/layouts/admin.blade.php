@@ -403,7 +403,7 @@
         {{--</div><!-- /.sidebar-shortcuts -->--}}
 
         <ul class="nav nav-list">
-            <li @if ($activeSidebar == 'adminHome')class="active"@endif>
+            <li @if($activeSidebar == 'adminHome')class="active"@endif>
                 <a href="{{route('adminHome')}}">
                     <i class="menu-icon fa fa-tachometer"></i>
                     <span class="menu-text"> 仪表盘 </span>
@@ -717,8 +717,8 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="">
-                <a href="widgets.html">
+            <li @if($activeSidebar == 'adminLink')class="active"@endif>
+                <a href="{{ route('adminLinkList') }}">
                     <i class="menu-icon fa fa-link"></i>
                     <span class="menu-text"> 链接管理 </span>
                 </a>
