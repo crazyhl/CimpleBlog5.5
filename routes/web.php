@@ -29,6 +29,13 @@ Route::prefix('admin')->group(function () {
         // option
         Route::get('/option/', 'OptionController@index')->name('adminOptionList');
         Route::post('/option/', 'OptionController@save')->name('adminOptionSave');
+        // category
+        Route::get('/category/', 'CategoryController@index')->name('adminCategoryList');
+        Route::get('/category/create', 'CategoryController@create')->name('adminCategoryCreate');
+        Route::post('/category/create', 'CategoryController@save')->name('adminCategorySave');
+        Route::get('/category/{category}/edit', 'CategoryController@edit')->name('adminCategoryEdit');
+        Route::post('/category/{category}/edit', 'CategoryController@update')->name('adminCategoryUpdate');
+        Route::get('/category/{category}/delete', 'CategoryController@delete')->name('adminCategoryDelete');
     });
 
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

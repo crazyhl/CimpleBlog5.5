@@ -708,8 +708,8 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="">
-                <a href="widgets.html">
+            <li @if($activeSidebar == 'adminCategory')class="active"@endif>
+                <a href="{{ route('adminCategoryList') }}">
                     <i class="menu-icon fa fa-list-ul"></i>
                     <span class="menu-text"> 分类管理 </span>
                 </a>
