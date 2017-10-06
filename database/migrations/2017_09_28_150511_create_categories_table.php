@@ -17,7 +17,6 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('title'); // 标题
             $table->string('description'); // 描述
-            $table->unsignedInteger('count'); // 文章数量
             $table->unsignedInteger('order')->default(0); // 排序
             $table->unique('title');
             $table->index('order');
