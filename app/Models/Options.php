@@ -13,17 +13,17 @@ class Options extends Model
      */
     public $timestamps = false;
     /**
-     * 主键
+     * 主键.
      * @var string
      */
     protected $primaryKey = 'name';
     /**
-     * 批量赋值的字段
+     * 批量赋值的字段.
      * @var array
      */
     protected $fillable = ['name', 'value'];
     /**
-     * 主键不自增
+     * 主键不自增.
      * @var bool
      */
     public $incrementing = false;

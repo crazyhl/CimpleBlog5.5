@@ -26,6 +26,7 @@ class LinkController extends BaseController
         $links = Links::orderBy('id', 'desc')->paginate($this->perPageCount);
 
         $this->returnValueArr += compact('pageTitle', 'links');
+
         return view('admin.link.index', $this->returnValueArr);
     }
 
@@ -37,6 +38,7 @@ class LinkController extends BaseController
         $pageTitle = '新增链接';
 
         $this->returnValueArr += compact('pageTitle');
+
         return view('admin.link.create', $this->returnValueArr);
     }
 
@@ -66,6 +68,7 @@ class LinkController extends BaseController
         $pageTitle = '编辑链接';
 
         $this->returnValueArr += compact('pageTitle', 'link');
+
         return view('admin.link.edit', $this->returnValueArr);
     }
 

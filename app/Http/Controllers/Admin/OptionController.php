@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Options;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class OptionController extends BaseController
 {
     /**
-     * 系统设置列表
+     * 系统设置列表.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
@@ -27,7 +26,7 @@ class OptionController extends BaseController
     }
 
     /**
-     * 保存系统设置选项
+     * 保存系统设置选项.
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
