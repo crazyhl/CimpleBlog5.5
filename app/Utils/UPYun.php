@@ -14,7 +14,12 @@ namespace App\Utils;
  */
 class UPYun
 {
-    public static function getUploadImageParams($imgContentLength)
+    /**
+     * 获取又拍云的相关信息
+     * @param int $imgContentLength
+     * @return array
+     */
+    public static function getUploadImageParams($imgContentLength = 0)
     {
         $operator = env('UPYUN_OPERATOR');
         $password = md5(env('UPYUN_PASSWORD'));

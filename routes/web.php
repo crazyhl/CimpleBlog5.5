@@ -36,6 +36,20 @@ Route::prefix('admin')->group(function () {
         Route::get('/category/{category}/edit', 'CategoryController@edit')->name('adminCategoryEdit');
         Route::post('/category/{category}/edit', 'CategoryController@update')->name('adminCategoryUpdate');
         Route::get('/category/{category}/delete', 'CategoryController@delete')->name('adminCategoryDelete');
+        // page
+        Route::get('/page/', 'PageController@index')->name('adminPageList');
+        Route::get('/page/create', 'PageController@create')->name('adminPageCreate');
+        Route::post('/page/create', 'PageController@save')->name('adminPageSave');
+        Route::get('/page/{page}/edit', 'PageController@edit')->name('adminPageEdit');
+        Route::post('/page/{page}/edit', 'PageController@update')->name('adminPageUpdate');
+        Route::get('/page/{page}/delete', 'PageController@delete')->name('adminPageDelete');
+        // page
+        Route::get('/article/', 'ArticleController@index')->name('adminArticleList');
+        Route::get('/article/create', 'ArticleController@create')->name('adminArticleCreate');
+        Route::post('/article/create', 'ArticleController@save')->name('adminArticleSave');
+        Route::get('/article/{page}/edit', 'ArticleController@edit')->name('adminArticleEdit');
+        Route::post('/article/{page}/edit', 'ArticleController@update')->name('adminArticleUpdate');
+        Route::get('/article/{page}/delete', 'ArticleController@delete')->name('adminArticleDelete');
     });
 
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

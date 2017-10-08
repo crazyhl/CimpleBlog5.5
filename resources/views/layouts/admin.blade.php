@@ -31,7 +31,7 @@
     <![endif]-->
 
     <!-- inline styles related to this page -->
-
+    @yield('style')
     <!-- ace settings handler -->
     <script src="/aceadmin/js/ace-extra.min.js"></script>
 
@@ -324,11 +324,11 @@
 
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="{{$userAvator or '/aceadmin/images/avatars/user.jpg'}}" alt="User Avator" />
-                        {{--<span class="user-info">--}}
-                            {{--<small>Welcome,</small>--}}
-                            {{--Jason--}}
-                        {{--</span>--}}
+                        {{--<img class="nav-user-photo" src="{{$userAvator or '/aceadmin/images/avatars/user.jpg'}}" alt="User Avator" />--}}
+                        <span class="user-info">
+                            <small>Welcome,</small>
+                            Chris
+                        </span>
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>
 
@@ -641,8 +641,8 @@
                 {{--</ul>--}}
             {{--</li>--}}
 
-            <li class="">
-                <a href="#" class="dropdown-toggle">
+            <li  @if($activeSidebar == 'adminArticle')class="active"@endif>
+                <a href="{{route('adminArticleList')}}">
                     <i class="menu-icon fa fa-pencil-square-o"></i>
                     <span class="menu-text"> 文章管理 </span>
 
@@ -699,8 +699,8 @@
                 {{--</ul>--}}
             </li>
 
-            <li class="">
-                <a href="widgets.html">
+            <li @if($activeSidebar == 'adminPage')class="active"@endif>
+                <a href="{{ route('adminPageList') }}">
                     <i class="menu-icon fa fa-file-o"></i>
                     <span class="menu-text"> 页面管理 </span>
                 </a>
@@ -1071,5 +1071,6 @@
 <script src="/aceadmin/js/ace.min.js"></script>
 
 <!-- inline scripts related to this page -->
+@yield('script')
 </body>
 </html>
