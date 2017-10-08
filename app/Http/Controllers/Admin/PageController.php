@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePage;
-use App\Models\Categories;
-use App\Models\Pages;
 use App\Utils\UPYun;
+use App\Models\Pages;
+use App\Http\Requests\StorePage;
 
 class PageController extends BaseController
 {
@@ -82,7 +80,7 @@ class PageController extends BaseController
     }
 
     /**
-     * 保存编辑页面
+     * 保存编辑页面.
      * @param StorePage $request
      * @param Pages $page
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -101,7 +99,7 @@ class PageController extends BaseController
     }
 
     /**
-     * 删除页面
+     * 删除页面.
      * @param Pages $page
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

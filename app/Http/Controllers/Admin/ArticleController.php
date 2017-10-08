@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreArticle;
-use App\Models\Categories;
-use App\Models\Pages;
 use App\Utils\UPYun;
+use App\Models\Pages;
+use App\Models\Categories;
+use App\Http\Requests\StoreArticle;
 
 class ArticleController extends BaseController
 {
@@ -84,7 +83,7 @@ class ArticleController extends BaseController
     }
 
     /**
-     * 保存编辑文章
+     * 保存编辑文章.
      * @param StoreArticle $request
      * @param Pages $page
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -103,7 +102,7 @@ class ArticleController extends BaseController
     }
 
     /**
-     * 删除文章
+     * 删除文章.
      * @param Pages $page
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

@@ -15,7 +15,7 @@ namespace App\Utils;
 class UPYun
 {
     /**
-     * 获取又拍云的相关信息
+     * 获取又拍云的相关信息.
      * @param int $imgContentLength
      * @return array
      */
