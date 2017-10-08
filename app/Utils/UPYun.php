@@ -21,7 +21,7 @@ class UPYun
         $method = 'POST';
         $date = gmdate(DATE_RFC7231);
         $bucket = env('UPYUN_BUCKET');
-        $requestUri = '/' . $bucket;
+        $requestUri = '/'.$bucket;
         $saveKey = env('UPYUN_IMG_SAVE_KEY');
         $expiration = time() + 1800;
 
@@ -42,7 +42,7 @@ class UPYun
         $authorization = 'UPYUN '.$operator.':'.$signature;
 
         return [
-            'requestUri' => env('UPYUN_URI') . $requestUri,
+            'requestUri' => env('UPYUN_URI').$requestUri,
             'policy' => $policy,
             'authorization' => $authorization,
         ];
