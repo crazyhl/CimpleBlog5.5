@@ -12,17 +12,17 @@ namespace App\Utils;
  * 七牛相关的工具类
  * Class Qiniu.
  */
-class Qiniu
+class UPYun
 {
     public static function getUploadImageParams($imgContentLength)
     {
-        $operator = env('QINIU_OPERATOR');
-        $password = md5(env('QINIU_PASSWORD'));
+        $operator = env('UPYUN_OPERATOR');
+        $password = md5(env('UPYUN_PASSWORD'));
         $method = 'POST';
         $date = gmdate(DATE_RFC7231);
-        $bucket = env('QINIU_BUCKET');
-        $requestUri = '/'.$bucket;
-        $saveKey = env('QINIU_IMG_SAVE_KEY');
+        $bucket = env('UPYUN_BUCKET');
+        $requestUri = '/' . $bucket;
+        $saveKey = env('UPYUN_IMG_SAVE_KEY');
         $expiration = time() + 1800;
 
         $policyArr = [
@@ -42,7 +42,7 @@ class Qiniu
         $authorization = 'UPYUN '.$operator.':'.$signature;
 
         return [
-            'requestUri' => $requestUri,
+            'requestUri' => env('UPYUN_URI') . $requestUri,
             'policy' => $policy,
             'authorization' => $authorization,
         ];
