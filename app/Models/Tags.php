@@ -12,4 +12,6 @@ class Tags extends Model
      * @var bool
      */
     public $timestamps = true;
+    protected $fillable = ['title'];
+
 }

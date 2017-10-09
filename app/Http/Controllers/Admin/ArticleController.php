@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Tags;
 use App\Utils\UPYun;
 use App\Models\Pages;
 use App\Models\Categories;
 use App\Http\Requests\StoreArticle;
+use phpDocumentor\Reflection\DocBlock\Tag;
 
 class ArticleController extends BaseController
 {
@@ -38,8 +40,9 @@ class ArticleController extends BaseController
 
         $upYunParameters = UPYun::getUploadImageParams();
         $categories = Categories::orderBy('order', 'desc')->orderBy('id', 'asc')->get();
+        $tags = Tags::orderBy('id', 'asc')->get();
 
-        $this->returnValueArr += compact('pageTitle', 'isArticle', 'upYunParameters', 'categories');
+        $this->returnValueArr += compact('pageTitle', 'isArticle', 'upYunParameters', 'categories', 'tags');
 
         return view('admin.articles.create', $this->returnValueArr);
     }
@@ -54,15 +57,28 @@ class ArticleController extends BaseController
         $page = new Pages();
         $page->title = $request->title;
         $page->content = $request->post('content');
-        $page->type = 2;
+        $page->type = 1;
         $page->order = $request->order;
-        $page->isTop = 0;
+        $page->isTop = $request->post('isTop', 0);
         $page->isAllowComment = $request->post('isAllowComment', 0);
         $page->status = $request->status;
 
         $page->save();
+        // categories
+        $page->categories()->detach();
+        foreach ($request->input('categories.*') as $categoryId) {
+            $page->categories()->attach($categoryId);
+        }
+        // tags
+        $page->tags()->detach();
+        foreach ($request->input('tags.*') as $tagName) {
+            $tagName = trim($tagName);
+            $tag = Tags::firstOrCreate(['title'=> $tagName]);
+            $page->tags()->attach($tag);
+        }
 
-        return redirect(route('adminPageList'));
+
+        return redirect(route('adminArticleList'));
     }
 
     /**
@@ -76,8 +92,9 @@ class ArticleController extends BaseController
         $isArticle = true;
         $upYunParameters = UPYun::getUploadImageParams();
         $categories = Categories::orderBy('order', 'desc')->orderBy('id', 'asc')->get();
+        $tags = Tags::orderBy('id', 'asc')->get();
 
-        $this->returnValueArr += compact('pageTitle', 'page', 'isArticle', 'upYunParameters', 'categories');
+        $this->returnValueArr += compact('pageTitle', 'page', 'isArticle', 'upYunParameters', 'categories', 'tags');
 
         return view('admin.articles.edit', $this->returnValueArr);
     }
@@ -94,11 +111,25 @@ class ArticleController extends BaseController
         $page->content = $request->post('content');
         $page->order = $request->order;
         $page->isAllowComment = $request->post('isAllowComment', 0);
+        $page->isTop = $request->post('isTop', 0);
         $page->status = $request->status;
 
         $page->save();
 
-        return redirect(route('adminPageList'));
+        // categories
+        $page->categories()->detach();
+        foreach ($request->input('categories.*') as $categoryId) {
+            $page->categories()->attach($categoryId);
+        }
+        // tags
+        $page->tags()->detach();
+        foreach ($request->input('tags.*') as $tagName) {
+            $tagName = trim($tagName);
+            $tag = Tags::firstOrCreate(['title'=> $tagName]);
+            $page->tags()->attach($tag);
+        }
+
+        return redirect(route('adminArticleList'));
     }
 
     /**
@@ -110,6 +141,6 @@ class ArticleController extends BaseController
     {
         $page->delete();
 
-        return redirect(route('adminPageList'));
+        return redirect(route('adminArticleList'));
     }
 }

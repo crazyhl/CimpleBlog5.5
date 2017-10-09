@@ -19,5 +19,5 @@
 @endsection
 
 @section('script')
-    @include('admin.pages.uppic')
+    @include('admin.upload_pic_script.upyun')
 @endsection

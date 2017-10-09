@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreArticle extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreArticle extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,40 @@ class StoreArticle extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        // 通用的判断条件
+        $rules = [];
+        $rules['content'] = 'required';
+        $rules['isAllowComment'] = [
+            'integer',
+            Rule::in([0, 1]),
         ];
+        $rules['order'] = [
+            'integer',
+        ];
+        $rules['status'] = [
+            'required',
+            'integer',
+            Rule::in([0, 1]),
+        ];
+
+        $rules['categories.*'] = [
+            'required',
+            'exists:categories,id',
+        ];
+
+        // 根据不同的场景进行不同的判定
+        if ($this->route()->action['as'] != 'adminArticleSave') {
+            // 其他情况
+            $rules['title'] = [
+                'required',
+                Rule::unique('pages')->ignore($this->route('page')->id),
+                'max:255',
+            ];
+        } else {
+            // 新增的时候
+            $rules['title'] = 'required|unique:links|max:255';
+        }
+
+        return $rules;
     }
 }

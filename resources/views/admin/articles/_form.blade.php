@@ -3,7 +3,7 @@
 
     <div class="col-sm-10">
         <input type="text" id="title" placeholder="链接标题" class="form-control" name="title"
-               value="{{$page->title or ''}}"/>
+               value="{{$page->title or old('title')}}"/>
     </div>
 </div>
 <div class="form-group">
@@ -25,13 +25,16 @@
 </div>
 @if ($isArticle === true)
     <div class="form-group">
-        <label class="col-sm-2 control-label no-padding-right" for="categories"> 分类 </label>
+        <label class="col-sm-2 control-label no-padding-right" for="categories[]"> 分类 </label>
 
         <div class="col-sm-10">
-            <select class="form-control" id="categories" name="categories" multiple="multiple">
+            <select class="form-control" id="categories" name="categories[]" multiple="multiple">
                 @foreach($categories as $category)
                     <option value="{{$category->id}}"
-                            @if(!empty($page) && in_array($category->id, $page->categories->pluck('id')->toArray()))
+                            @if(empty(old('categories[]')) && !empty($page) && in_array($category->id, $page->categories->pluck('id')->toArray()))
+                            selected
+                            @endif
+                            @if(!empty(old('categories[]')) && in_array($category->id, old('categories[]')))
                             selected
                             @endif
                     >{{$category->title}}
@@ -45,10 +48,13 @@
         <label class="col-sm-2 control-label no-padding-right" for="tags"> 标签 </label>
 
         <div class="col-sm-10">
-            <select class="form-control" id="tags" name="tags" multiple="multiple">
+            <select class="form-control" id="tags" name="tags[]" multiple="multiple">
                 @foreach($tags as $tag)
                     <option value="{{$tag->title}}"
-                            @if(!empty($page) && in_array($tag->id, $page->tags->pluck('id')->toArray()))
+                            @if(empty(old('tags[]')) && !empty($page) && in_array($tag->id, $page->tags->pluck('id')->toArray()))
+                            selected
+                            @endif
+                            @if(!empty(old('tags[]')) && in_array($category->id, old('tags[]')))
                             selected
                             @endif
                     >{{$tag->title}}
@@ -64,7 +70,7 @@
 
     <div class="col-sm-10">
         <textarea id="content" class="form-control" rows="20" placeholder=""
-                  name="content">{{$page->content or ''}}</textarea>
+                  name="content">{{$page->content or old('content')}}</textarea>
     </div>
 </div>
 
@@ -73,7 +79,7 @@
 
     <div class="col-sm-10">
         <input type="text" id="order" placeholder="排序" class="form-control" name="order"
-               value="{{$page->order or '0'}}"/>
+               value="{{$page->order or 0}}"/>
     </div>
 </div>
 
@@ -84,8 +90,11 @@
         <div class="checkbox">
             <label style="padding-left: 10px;">
                 <input name="isAllowComment" type="checkbox" class="ace" value="1"
-                       @if(empty($page) ||$page->isAllowComment == 1)
+                       @if(empty(old('isAllowComment')) && (empty($page) ||$page->isAllowComment == 1))
                        checked
+                       @endif
+                       @if(!empty(old('isAllowComment')) && old('isAllowComment') == 1)
+                       selected
                         @endif
                 />
                 <span class="lbl"> 是否允许评论</span>
@@ -101,7 +110,14 @@
         <div class="col-sm-10">
             <div class="checkbox">
                 <label style="padding-left: 10px;">
-                    <input name="isTop" type="checkbox" class="ace" value="1"/>
+                    <input name="isTop" type="checkbox" class="ace" value="1"
+                           @if(empty(old('isTop')) && (empty($page) ||$page->isTop == 1))
+                           checked
+                           @endif
+                           @if(!empty(old('isTop')) && old('isTop') == 1)
+                           selected
+                            @endif
+                    />
                     <span class="lbl"> 置顶 </span>
                 </label>
             </div>
@@ -115,8 +131,11 @@
     <div class="col-sm-10">
         <label>
             <input name="status" type="radio" class="ace" value="1"
-                   @if(empty($page) ||$page->status == 1)
+                   @if(empty(old('status')) && (empty($page) ||$page->status == 1))
                    checked
+                   @endif
+                   @if(!empty(old('status')) && old('status') == 1)
+                   selected
                     @endif
             /><span class="lbl"> 发布</span>
         </label>

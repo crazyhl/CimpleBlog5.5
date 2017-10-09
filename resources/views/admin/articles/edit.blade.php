@@ -12,12 +12,17 @@
             @include('layouts.errors')
             <!-- PAGE CONTENT BEGINS -->
             <form class="form-horizontal" role="form" action="{{route('adminArticleUpdate', $page->id)}}" method="post">
-                @include('admin.pages._form')
+                @include('admin.articles._form')
             </form>
         </div><!-- /.col -->
     </div>
 @endsection
 
 @section('script')
-    @include('admin.pages.uppic')
+    @include('admin.upload_pic_script.upyun')
+    @include('admin.selectize.pub_article_js')
+@endsection
+
+@section('style')
+    @include('admin.selectize.css')
 @endsection
