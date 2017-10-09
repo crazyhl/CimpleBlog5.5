@@ -7,7 +7,6 @@ use App\Utils\UPYun;
 use App\Models\Pages;
 use App\Models\Categories;
 use App\Http\Requests\StoreArticle;
-use phpDocumentor\Reflection\DocBlock\Tag;
 
 class ArticleController extends BaseController
 {
@@ -76,7 +75,6 @@ class ArticleController extends BaseController
             $tag = Tags::firstOrCreate(['title'=> $tagName]);
             $page->tags()->attach($tag);
         }
-
 
         return redirect(route('adminArticleList'));
     }
