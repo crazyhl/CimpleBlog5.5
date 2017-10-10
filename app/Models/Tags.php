@@ -13,5 +13,4 @@ class Tags extends Model
      */
     public $timestamps = true;
     protected $fillable = ['title'];
-
 }
