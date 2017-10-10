@@ -32,7 +32,13 @@
                     <a href="{{route('adminArticleEdit', [$page->id])}}">{{$page->title}}</a>
                 </td>
                 <td>{{$page->order}}</td>
-                <td>{{$page->isAllowComment}}</td>
+                <td>
+                    @if ($page->isAllowComment === 1)
+                        <span class="green">是</span>
+                    @else
+                        <span class="purple">否</span>
+                    @endif
+                </td>
                 <td>
                     @if ($page->status === 1)
                         <span class="green">是</span>

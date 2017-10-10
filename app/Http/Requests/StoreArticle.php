@@ -39,9 +39,10 @@ class StoreArticle extends FormRequest
             'integer',
             Rule::in([0, 1]),
         ];
-
+        $rules['categories'] = 'required';
         $rules['categories.*'] = [
             'required',
+            'integer',
             'exists:categories,id',
         ];
 

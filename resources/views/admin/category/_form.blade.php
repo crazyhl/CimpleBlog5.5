@@ -19,7 +19,7 @@
     <label class="col-sm-2 control-label no-padding-right" for="order"> 排序 </label>
 
     <div class="col-sm-10">
-        <input type="text" id="order" placeholder="排序" class="form-control" name="order" value="{{$category->order or '0'}}"/>
+        <input type="text" id="order" placeholder="排序" class="form-control" name="order" value="{{$category->order ?: (old('order') ?: '0')}}"/>
     </div>
 </div>
 
