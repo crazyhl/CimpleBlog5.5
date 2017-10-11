@@ -35,9 +35,9 @@
                 <td>{{$page->isAllowComment}}</td>
                 <td>
                     @if ($page->status === 1)
-                        <span class="green">是</span>
+                        <span class="green">发布</span>
                     @else
-                        <span class="purple">否</span>
+                        <span class="purple">草稿</span>
                     @endif
                 </td>
                 <td>{{$page->created_at}}</td>
