@@ -14,7 +14,7 @@ class CategoryController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->returnValueArr['activeSidebar'] = 'adminCategory';
+        view()->share('activeSidebar', 'adminCategory');
     }
 
     public function index()
@@ -22,9 +22,7 @@ class CategoryController extends BaseController
         $pageTitle = '分类列表';
         $categories = Categories::with('pages')->orderBy('order', 'desc')->orderBy('id', 'asc')->paginate($this->perPageCount);
 
-        $this->returnValueArr += compact('pageTitle', 'categories');
-
-        return view('admin.category.index', $this->returnValueArr);
+        return view('admin.category.index', compact('pageTitle', 'categories'));
     }
 
     /**
@@ -34,9 +32,7 @@ class CategoryController extends BaseController
     {
         $pageTitle = '新增分类';
 
-        $this->returnValueArr += compact('pageTitle');
-
-        return view('admin.category.create', $this->returnValueArr);
+        return view('admin.category.create', compact('pageTitle'));
     }
 
     /**
@@ -57,22 +53,20 @@ class CategoryController extends BaseController
 
     /**
      * 编辑链接.
-     * @param Categories $link
+     * @param Categories $category
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Categories $category)
     {
         $pageTitle = '编辑分类';
 
-        $this->returnValueArr += compact('pageTitle', 'category');
-
-        return view('admin.category.edit', $this->returnValueArr);
+        return view('admin.category.edit', compact('pageTitle', 'category'));
     }
 
     /**
      * 保存编辑链接.
      * @param StoreCategory $request
-     * @param Categories $link
+     * @param Categories $category
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(StoreCategory $request, Categories $category)

@@ -14,7 +14,7 @@ class LinkController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->returnValueArr['activeSidebar'] = 'adminLink';
+        view()->share('activeSidebar', 'adminLink');
     }
 
     /**
@@ -25,9 +25,7 @@ class LinkController extends BaseController
         $pageTitle = '链接列表';
         $links = Links::orderBy('id', 'desc')->paginate($this->perPageCount);
 
-        $this->returnValueArr += compact('pageTitle', 'links');
-
-        return view('admin.link.index', $this->returnValueArr);
+        return view('admin.link.index', compact('pageTitle', 'links'));
     }
 
     /**
@@ -37,9 +35,7 @@ class LinkController extends BaseController
     {
         $pageTitle = '新增链接';
 
-        $this->returnValueArr += compact('pageTitle');
-
-        return view('admin.link.create', $this->returnValueArr);
+        return view('admin.link.create', compact('pageTitle'));
     }
 
     /**
@@ -67,9 +63,7 @@ class LinkController extends BaseController
     {
         $pageTitle = '编辑链接';
 
-        $this->returnValueArr += compact('pageTitle', 'link');
-
-        return view('admin.link.edit', $this->returnValueArr);
+        return view('admin.link.edit', compact('pageTitle', 'link'));
     }
 
     /**

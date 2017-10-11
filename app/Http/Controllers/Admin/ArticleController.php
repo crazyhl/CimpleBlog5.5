@@ -13,7 +13,7 @@ class ArticleController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->returnValueArr['activeSidebar'] = 'adminArticle';
+        view()->share('activeSidebar', 'adminArticle');
     }
 
     /**
@@ -24,9 +24,7 @@ class ArticleController extends BaseController
         $pageTitle = '文章列表';
         $pages = Pages::articles()->paginate($this->perPageCount);
 
-        $this->returnValueArr += compact('pageTitle', 'pages');
-
-        return view('admin.articles.index', $this->returnValueArr);
+        return view('admin.articles.index', compact('pageTitle', 'pages'));
     }
 
     /**
@@ -41,9 +39,7 @@ class ArticleController extends BaseController
         $categories = Categories::orderBy('order', 'desc')->orderBy('id', 'asc')->get();
         $tags = Tags::orderBy('id', 'asc')->get();
 
-        $this->returnValueArr += compact('pageTitle', 'isArticle', 'upYunParameters', 'categories', 'tags');
-
-        return view('admin.articles.create', $this->returnValueArr);
+        return view('admin.articles.create', compact('pageTitle', 'isArticle', 'upYunParameters', 'categories', 'tags'));
     }
 
     /**
@@ -92,9 +88,7 @@ class ArticleController extends BaseController
         $categories = Categories::orderBy('order', 'desc')->orderBy('id', 'asc')->get();
         $tags = Tags::orderBy('id', 'asc')->get();
 
-        $this->returnValueArr += compact('pageTitle', 'page', 'isArticle', 'upYunParameters', 'categories', 'tags');
-
-        return view('admin.articles.edit', $this->returnValueArr);
+        return view('admin.articles.edit', compact('pageTitle', 'page', 'isArticle', 'upYunParameters', 'categories', 'tags'));
     }
 
     /**

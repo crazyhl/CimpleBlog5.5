@@ -11,7 +11,7 @@ class PageController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->returnValueArr['activeSidebar'] = 'adminPage';
+        view()->share('activeSidebar', 'adminPage');
     }
 
     /**
@@ -22,9 +22,7 @@ class PageController extends BaseController
         $pageTitle = '页面列表';
         $pages = Pages::pages()->paginate($this->perPageCount);
 
-        $this->returnValueArr += compact('pageTitle', 'pages');
-
-        return view('admin.pages.index', $this->returnValueArr);
+        return view('admin.pages.index', compact('pageTitle', 'pages'));
     }
 
     /**
@@ -37,9 +35,7 @@ class PageController extends BaseController
 
         $upYunParameters = UPYun::getUploadImageParams();
 
-        $this->returnValueArr += compact('pageTitle', 'isArticle', 'upYunParameters');
-
-        return view('admin.pages.create', $this->returnValueArr);
+        return view('admin.pages.create', compact('pageTitle', 'isArticle', 'upYunParameters'));
     }
 
     /**
@@ -74,9 +70,7 @@ class PageController extends BaseController
         $isArticle = false;
         $upYunParameters = UPYun::getUploadImageParams();
 
-        $this->returnValueArr += compact('pageTitle', 'page', 'isArticle', 'upYunParameters');
-
-        return view('admin.pages.edit', $this->returnValueArr);
+        return view('admin.pages.edit', compact('pageTitle', 'page', 'isArticle', 'upYunParameters'));
     }
 
     /**
