@@ -22,6 +22,7 @@ class Markdown
     public static function parse($content)
     {
         $parseDown = new \Parsedown();
+
         return $parseDown->text($content);
     }
 }
