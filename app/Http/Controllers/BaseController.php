@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
-use App\Models\Links;
-use App\Models\Options;
-use App\Models\Pages;
 use App\Models\Tags;
+use App\Models\Links;
+use App\Models\Pages;
+use App\Models\Options;
+use App\Models\Categories;
 
 class BaseController extends Controller
 {
@@ -28,7 +28,6 @@ class BaseController extends Controller
         if ($options && $options['PER_PAGE']) {
             $this->perPage = $options['PER_PAGE'] ?? 10;
         }
-
 
         view()->share('newestArticles', $newestArticles);
         view()->share('tags', $tags);

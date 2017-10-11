@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
-use App\Models\Pages;
 use App\Models\Tags;
-use Illuminate\Http\Request;
+use App\Models\Pages;
+use App\Models\Categories;
 
 class IndexController extends BaseController
 {
@@ -22,7 +21,8 @@ class IndexController extends BaseController
     {
         $pageTitle = $category->title;
         $activeNav = 'home';
-        $articles = $category->pages()->articles()->with('tags', 'categories')->where('status', 1)->paginate($this->perPage);;
+        $articles = $category->pages()->articles()->with('tags', 'categories')->where('status', 1)->paginate($this->perPage);
+
         return view('index.index.index', compact('pageTitle', 'activeNav', 'articles'));
     }
 
@@ -30,7 +30,8 @@ class IndexController extends BaseController
     {
         $pageTitle = $tag->title;
         $activeNav = 'home';
-        $articles = $tag->pages()->articles()->with('tags', 'categories')->where('status', 1)->paginate($this->perPage);;
+        $articles = $tag->pages()->articles()->with('tags', 'categories')->where('status', 1)->paginate($this->perPage);
+
         return view('index.index.index', compact('pageTitle', 'activeNav', 'articles'));
     }
 }
