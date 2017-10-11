@@ -24,27 +24,26 @@
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #777;
-  background:none;
+  background: none;
   border-bottom: 2px solid $my-main-color;
 }
 
 a {
   color: #636b6f;
   cursor: pointer;
-  &:hover  {
+  &:hover {
     color: $my-main-color;
     text-decoration: none;
   }
-  &:active{
+  &:active {
     color: $my-main-color;
   }
 }
 
-
 .articles {
-  padding-bottom:14px;
+  padding-bottom: 14px;
   margin-bottom: 36px;
-  border-bottom: 1px solid rgba(0,0,0,0.0785);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0785);
   h3 {
     margin-top: 11px;
     color: $my-main-color;
@@ -54,56 +53,95 @@ a {
   }
   .article-content {
     margin-top: 11px;
-    font-size:1.1em;
-    img{
-      max-width:100%;
+    font-size: 1.1em;
+    img {
+      max-width: 100%;
     }
   }
   .read-more {
-    margin-top:11px;
-    font-size:1.2em;
+    margin-top: 11px;
+    font-size: 1.2em;
     a {
       color: $my-main-color;
     }
   }
 }
+
 .side-bar {
   .h4 {
     margin-top: 0px;
     margin-bottom: 0px;
   }
   .side-bar-header {
-    border-bottom: 1px solid rgba(0,0,0,0.0785);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0785);
     padding-top: 11px;
     padding-bottom: 11px;
   }
 
   .side-bar-body {
     margin-top: 11px;
-    margin-bottom:14px;
+    margin-bottom: 14px;
     ul {
       list-style: none;
       padding-left: 0px;
-      li{
-        display:inline-block;
+      li {
+        display: inline-block;
         width: 100%;
         overflow: hidden;
       }
     }
   }
 }
+
 .blog-header {
-  margin:0px;
+  margin: 0px;
 }
+
 .blog-footer {
   padding: 40px 0;
   color: #999;
   text-align: center;
   background-color: #f9f9f9;
-  border-top: 1px solid rgba(0,0,0,0.0785);
+  border-top: 1px solid rgba(0, 0, 0, 0.0785);
   p:last-child {
     margin-bottom: 0;
   }
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+  z-index: 3;
+  color: #fff;
+  background-color: $my-main-color;
+  border-color: $my-main-color;
+  cursor: default;
+}
+
+.pagination > li > a, .pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.6;
+  text-decoration: none;
+  color: $my-main-color;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-left: -1px;
+}
+
+.pagination > li > a:hover {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.6;
+  text-decoration: none;
+  color: $my-main-color;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  margin-left: -1px;
+}
+
+.pagination > li > a:active {
+  color: $my-main-color;
 }
 
 @media screen and (max-width: 768px) {
@@ -120,7 +158,7 @@ a {
   .navbar-default .navbar-nav > .active > a:hover,
   .navbar-default .navbar-nav > .active > a:focus {
     color: $navbar-default-link-active-color;
-    background:$navbar-default-link-active-bg;
+    background: $navbar-default-link-active-bg;
     border: none;
   }
 }
@@ -138,3 +176,4 @@ a {
     padding-bottom: 12px;
   }
 }
+

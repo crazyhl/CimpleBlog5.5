@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', 'IndexController@index')->name('home');
+Route::get('/article/{page}', 'PageController@article')->name('article')->where('page', '[0-9]+');;
+Route::get('/page/{page}', 'PageController@page')->name('page')->where('page', '[0-9]+');;
+Route::get('/category/{category}', 'IndexController@category')->name('category')->where('category', '[0-9]+');;
+Route::get('/tag/{tag}', 'IndexController@tag')->name('tag')->where('tag', '[0-9]+');;
 
 Route::prefix('admin')->group(function () {
     // 在 "App\Http\Controllers\Admin" 命名空间下的控制器

@@ -13,4 +13,17 @@ class Tags extends Model
      */
     public $timestamps = true;
     protected $fillable = ['title'];
+
+    /**
+     * 获得此分类的文章。
+     */
+    public function pages()
+    {
+        return $this->belongsToMany(
+            'App\Models\Pages',
+            'page_tag',
+            'tag_id',
+            'page_id'
+        );
+    }
 }
