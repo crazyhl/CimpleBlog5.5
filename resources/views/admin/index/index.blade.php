@@ -8,11 +8,23 @@
             </div>
 
             <div class="infobox-data">
-                <span class="infobox-data-number">32</span>
+                <span class="infobox-data-number">{{$articleNormalCount}}</span>
                 <div class="infobox-content">文章数</div>
             </div>
 
             {{--<div class="stat stat-success">8%</div>--}}
+        </div>
+
+        <div class="infobox infobox-pink">
+            <div class="infobox-icon">
+                <i class="ace-icon fa fa-file"></i>
+            </div>
+
+            <div class="infobox-data">
+                <span class="infobox-data-number">{{$articleDraftCount}}</span>
+                <div class="infobox-content">草稿数</div>
+            </div>
+            {{--<div class="stat stat-important">4%</div>--}}
         </div>
 
         <div class="infobox infobox-blue">
@@ -21,7 +33,7 @@
             </div>
 
             <div class="infobox-data">
-                <span class="infobox-data-number">11</span>
+                <span class="infobox-data-number">{{$categoryCount}}</span>
                 <div class="infobox-content">分类数量</div>
             </div>
 
@@ -31,28 +43,16 @@
             {{--</div>--}}
         </div>
 
-        {{--<div class="infobox infobox-pink">--}}
-            {{--<div class="infobox-icon">--}}
-                {{--<i class="ace-icon fa fa-shopping-cart"></i>--}}
-            {{--</div>--}}
+        <div class="infobox infobox-red">
+            <div class="infobox-icon">
+                <i class="ace-icon fa fa-tags"></i>
+            </div>
 
-            {{--<div class="infobox-data">--}}
-                {{--<span class="infobox-data-number">8</span>--}}
-                {{--<div class="infobox-content">new orders</div>--}}
-            {{--</div>--}}
-            {{--<div class="stat stat-important">4%</div>--}}
-        {{--</div>--}}
-
-        {{--<div class="infobox infobox-red">--}}
-            {{--<div class="infobox-icon">--}}
-                {{--<i class="ace-icon fa fa-flask"></i>--}}
-            {{--</div>--}}
-
-            {{--<div class="infobox-data">--}}
-                {{--<span class="infobox-data-number">7</span>--}}
-                {{--<div class="infobox-content">experiments</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+            <div class="infobox-data">
+                <span class="infobox-data-number">{{$tagCount}}</span>
+                <div class="infobox-content">标签数</div>
+            </div>
+        </div>
 
         {{--<div class="infobox infobox-orange2">--}}
             {{--<div class="infobox-chart">--}}
