@@ -73,6 +73,12 @@ class OptionController extends BaseController
             ['value' => $request->newArticlesCount]
         );
 
+        // NEW_ARTICLES_COUNT
+        Options::updateOrCreate(
+            ['name' => 'COMMENT_CODE'],
+            ['value' => $request->commentCode]
+        );
+
         return redirect(route('adminOptionList'));
     }
 }
