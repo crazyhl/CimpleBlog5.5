@@ -6,7 +6,7 @@
     <div class="side-bar-body">
         <ul>
             @foreach($newestArticles as $article)
-            <li><a>{{$article->title}}</a></li>
+            <li><a href="{{route('article', $article->id)}}">{{$article->title}}</a></li>
             @endforeach
         </ul>
     </div>

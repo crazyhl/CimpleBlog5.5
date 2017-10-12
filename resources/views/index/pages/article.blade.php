@@ -3,7 +3,7 @@
 @section('content')
     @if(!empty($page))
         <article class="articles">
-            <h3><a href="{{route('article', $page->id)}}">{{$page->title}}</a></h3>
+            <h3>{{$page->title}}</h3>
             <div class="article-info">
                 发布于: {{ Carbon\Carbon::parse($page->created_at)->format('Y-m-d') }}&nbsp;&nbsp;&nbsp;
                 @if($page->categories->count() > 0)
