@@ -77,7 +77,6 @@ class ArticleController extends BaseController
             }
         }
 
-
         return redirect(route('adminArticleList'));
     }
 
