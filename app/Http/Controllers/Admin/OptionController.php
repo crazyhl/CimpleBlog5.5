@@ -33,51 +33,68 @@ class OptionController extends BaseController
     public function save(Request $request)
     {
         // BN_NO
-        Options::updateOrCreate(
-            ['name' => 'BN_NO'],
-            ['value' => $request->bnNO]
-        );
+        if ($request->post('bnNO', '')) {
+            Options::updateOrCreate(
+                ['name' => 'BN_NO'],
+                ['value' => $request->post('bnNO', '')]
+            );
+        }
+
         // DESCRIPTION
-        Options::updateOrCreate(
-            ['name' => 'DESCRIPTION'],
-            ['value' => $request->description]
-        );
+        if ($request->post('description', '')) {
+            Options::updateOrCreate(
+                ['name' => 'DESCRIPTION'],
+                ['value' => $request->post('description', '')]
+            );
+        }
+
         // KEYWORDS
-        Options::updateOrCreate(
-            ['name' => 'KEYWORDS'],
-            ['value' => $request->keywords]
-        );
+        if ($request->post('keywords', '')) {
+            Options::updateOrCreate(
+                ['name' => 'KEYWORDS'],
+                ['value' => $request->post('keywords', '')]
+            );
+        }
+
         // PER_PAGE
-        Options::updateOrCreate(
-            ['name' => 'PER_PAGE'],
-            ['value' => $request->perPage]
-        );
+        if ($request->post('perPage', 10)) {
+            Options::updateOrCreate(
+                ['name' => 'PER_PAGE'],
+                ['value' => $request->post('perPage', 10)]
+            );
+        }
+
         // STATISTICS
-        Options::updateOrCreate(
-            ['name' => 'STATISTICS'],
-            ['value' => $request->statistics]
-        );
+        if ($request->post('statistics', '')) {
+            Options::updateOrCreate(
+                ['name' => 'STATISTICS'],
+                ['value' => $request->post('statistics', '')]
+            );
+        }
+
         // SUB_TITLE
-        Options::updateOrCreate(
-            ['name' => 'SUB_TITLE'],
-            ['value' => $request->subTitle]
-        );
+        if ($request->post('subTitle', '')) {
+            Options::updateOrCreate(
+                ['name' => 'SUB_TITLE'],
+                ['value' => $request->post('subTitle', '')]
+            );
+        }
+
         // TITLE
-        Options::updateOrCreate(
-            ['name' => 'TITLE'],
-            ['value' => $request->title]
-        );
-        // NEW_ARTICLES_COUNT
-        Options::updateOrCreate(
-            ['name' => 'NEW_ARTICLES_COUNT'],
-            ['value' => $request->newArticlesCount]
-        );
+        if ($request->post('title', '')) {
+            Options::updateOrCreate(
+                ['name' => 'TITLE'],
+                ['value' => $request->post('title', '')]
+            );
+        }
 
         // NEW_ARTICLES_COUNT
-        Options::updateOrCreate(
-            ['name' => 'COMMENT_CODE'],
-            ['value' => $request->commentCode]
-        );
+        if ($request->post('newArticlesCount', 0)) {
+            Options::updateOrCreate(
+                ['name' => 'NEW_ARTICLES_COUNT'],
+                ['value' => $request->post('newArticlesCount', 0)]
+            );
+        }
 
         return redirect(route('adminOptionList'));
     }

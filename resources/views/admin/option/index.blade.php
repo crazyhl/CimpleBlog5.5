@@ -84,15 +84,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="commentCode"> 评论框代码 </label>
-
-                    <div class="col-sm-10">
-                        <textarea id="commentCode" class="form-control" rows="8" placeholder="评论框代码"
-                                  name="commentCode">{{$options['COMMENT_CODE'] or ''}}</textarea>
-                    </div>
-                </div>
-
                 <div class="clearfix form-actions">
                     <div class="col-md-offset-3 col-md-9">
                         <button class="btn btn-info" type="submit">

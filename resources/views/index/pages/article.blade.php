@@ -24,9 +24,7 @@
                 {!! \App\Utils\Markdown::parse($page->content) !!}
             </div>
         </article>
-        @if($page->isAllowComment == 1)
-        {!! $options['COMMENT_CODE'] or '' !!}
-        @endif
+        @include('layouts._index-comment')
     @endif
 
 @endsection
