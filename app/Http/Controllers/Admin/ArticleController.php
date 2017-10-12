@@ -61,16 +61,22 @@ class ArticleController extends BaseController
         $page->save();
         // categories
         $page->categories()->detach();
-        foreach ($request->input('categories.*') as $categoryId) {
-            $page->categories()->attach($categoryId);
+        if ($request->input('categories.*')) {
+            foreach ($request->input('categories.*') as $categoryId) {
+                $page->categories()->attach($categoryId);
+            }
         }
+
         // tags
         $page->tags()->detach();
-        foreach ($request->input('tags.*') as $tagName) {
-            $tagName = trim($tagName);
-            $tag = Tags::firstOrCreate(['title'=> $tagName]);
-            $page->tags()->attach($tag);
+        if ($request->input('tags.*')) {
+            foreach ($request->input('tags.*') as $tagName) {
+                $tagName = trim($tagName);
+                $tag = Tags::firstOrCreate(['title'=> $tagName]);
+                $page->tags()->attach($tag);
+            }
         }
+
 
         return redirect(route('adminArticleList'));
     }
