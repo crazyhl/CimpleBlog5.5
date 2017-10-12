@@ -14,10 +14,6 @@ class BaseController extends Controller
 
     public function __construct()
     {
-        $newestArticles = Pages::articles()->with('tags', 'categories')->where('status', 1)->limit(10)->get();
-        $tags = Tags::with('pages')->get();
-        $categories = Categories::with('pages')->get();
-        $pages = Pages::pages()->where('status', 1)->get();
         $optionsArr = Options::all();
         $options = [];
         foreach ($optionsArr as $option) {
@@ -26,8 +22,13 @@ class BaseController extends Controller
         $links = Links::all();
 
         if ($options && $options['PER_PAGE']) {
-            $this->perPage = $options['PER_PAGE'] ?? 10;
+            $this->perPage = $options['PER_PAGE'] ?: 10;
         }
+
+        $newestArticles = Pages::articles()->with('tags', 'categories')->where('status', 1)->limit($options['NEW_ARTICLES_COUNT'])->get();
+        $tags = Tags::with('pages')->get();
+        $categories = Categories::with('pages')->get();
+        $pages = Pages::pages()->where('status', 1)->get();
 
         view()->share('newestArticles', $newestArticles);
         view()->share('tags', $tags);
