@@ -21,13 +21,13 @@ class UPYun
      */
     public static function getUploadImageParams($imgContentLength = 0)
     {
-        $operator = env('UPYUN_OPERATOR');
-        $password = md5(env('UPYUN_PASSWORD'));
+        $operator = config('upyun.opeator');
+        $password = md5(config('upyun.password'));
         $method = 'POST';
         $date = gmdate(DATE_RFC7231);
-        $bucket = env('UPYUN_BUCKET');
+        $bucket = config('upyun.bucket');
         $requestUri = '/'.$bucket;
-        $saveKey = env('UPYUN_IMG_SAVE_KEY');
+        $saveKey = config('upyun.imgSaveKey');
         $expiration = time() + 1800;
 
         $policyArr = [
@@ -47,7 +47,7 @@ class UPYun
         $authorization = 'UPYUN '.$operator.':'.$signature;
 
         return [
-            'requestUri' => env('UPYUN_URI').$requestUri,
+            'requestUri' => config('upyun.uri').$requestUri,
             'policy' => $policy,
             'authorization' => $authorization,
         ];
